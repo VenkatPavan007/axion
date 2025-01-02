@@ -10,6 +10,10 @@ process.on('uncaughtException', err => {
     process.exit(1)
 })
 
+const mongoDB = config.dotEnv.MONGO_URI? require('./connect/mongo')({
+    uri: config.dotEnv.MONGO_URI
+}):null;
+
 process.on('unhandledRejection', (reason, promise) => {
     console.log('Unhandled rejection at ', promise, `reason:`, reason);
     process.exit(1)

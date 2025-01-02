@@ -76,4 +76,16 @@ module.exports = class TokenManager {
 
         return { shortToken };
     }
+
+    genLongTokenWithRole({userId, userKey, role}){
+        return jwt.sign(
+            {
+                userKey,
+                userId,
+                role
+            },
+            this.config.dotEnv.LONG_TOKEN_SECRET,
+            {expiresIn: this.longTokenExpiresIn
+        })
+    }
 }

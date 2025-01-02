@@ -1,12 +1,11 @@
-
+const commonSchema = require('../../_common/schema.models');
 
 module.exports = {
     createUser: [
-        {
-            model: 'username',
-            required: true,
-        },
-    ],
+        commonSchema.username,
+        commonSchema.email,
+        commonSchema.password
+    ]
 }
 
 

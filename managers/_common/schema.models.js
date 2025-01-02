@@ -1,3 +1,4 @@
+const { path } = require('express/lib/application');
 const emojis = require('../../public/emojis.data.json');
 
 module.exports = {
@@ -102,4 +103,64 @@ module.exports = {
     bool: {
         type: 'Boolean',
     },
+    name: {
+        type: 'string',
+        length: {min: 3, max: 20},
+        path: 'name'
+    },
+    schoolId: {
+        path: 'schoolId',
+        type: 'string',
+        required: true
+    },
+    capacity: {
+        path: 'capacity',
+        type: 'number',
+        required: true
+    },
+    resources: {
+        path: 'resources',
+        type: 'array',
+        items: {
+            type: 'object',
+            properties: {
+                name: { type: 'string', required: true, length: {min: 3, max: 20} },
+                quantity: { type: 'number', required: true }
+            }
+        },
+        required: false
+    },
+    firstName: {
+        path: 'firstName',
+        type: 'string',
+        length: { min: 1, max: 50 },
+        required: true
+    },
+    lastName: {
+        path: 'lastName',
+        type: 'string',
+        length: { min: 1, max: 50 },
+        required: true
+    },
+    email: {
+        path: 'email',
+        type: 'string',
+        format: 'email',
+        required: true
+    },
+    schoolId: {
+        path: 'schoolId',
+        type: 'string',
+        required: true
+    },
+    classroomId: {
+        path: 'classroomId',
+        type: 'string',
+        required: false
+    },
+    purviewSchoolId: {
+        path: 'purviewSchoolId',
+        type: 'string',
+        required: false
+    }
 }
